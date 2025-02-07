@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "module": "CommonJS",
+    "strict": true,
+    "noEmit": true
+  },
+  "include": ["**/*"]
+}
