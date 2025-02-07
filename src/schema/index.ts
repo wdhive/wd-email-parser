@@ -9,10 +9,13 @@ const zodNodeSchema: z.ZodType<types.EmailNode> = z.lazy(() => {
     core.zImageSchema,
     core.zButtonSchema,
     core.zSpacerSchema,
+    core.zHeadingSchema,
     core.zVerticalSpacerSchema,
 
-    core.zRowSchema.extend({ children: z.array(zodNodeSchema) }),
     core.zSectionSchema.extend({ children: z.array(zodNodeSchema) }),
+    core.zRowSchema.extend({
+      children: z.array(core.zRowItemSchema.extend({ node: zodNodeSchema })),
+    }),
   ])
 })
 

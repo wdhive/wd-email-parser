@@ -1,7 +1,8 @@
 {
   "scripts": {
     "test": "jest --watchAll",
-    "dev": "run ./src/index.ts"
+    "dev": "run ./src/index.ts",
+    "tsc": "tsc --watch --noEmit"
   },
   "dependencies": {
     "parse5": "^7.2.1",
