@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "test": "jest --watchAll",
     "dev": "run ./src/index.ts"
   },
   "dependencies": {
@@ -7,6 +8,9 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
     "typescript": "^5.7.3"
   }
 }

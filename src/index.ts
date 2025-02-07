@@ -1,8 +1,6 @@
-import nodeSchema from './schema'
+import { hasForbiddenTags, hasUnknownTags } from './schema/parse5'
 
-const result = nodeSchema({
-  type: 'EMAIL-HTML',
-  children: '<span><strong>Click me</strong> Outside </span>',
-})
+const html = '<iframe><script></script></iframe>'
+const forbiddenTags = ['script']
 
-console.log(result)
+console.log(hasForbiddenTags(html, forbiddenTags)) // true
