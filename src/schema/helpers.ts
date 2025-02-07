@@ -55,7 +55,7 @@ export const containerPaddingProperties = {
   containerPaddingBottom: z.number().optional(),
 }
 
-export const commonTextProperties = {
+export const textProperties = {
   color: hexColorSchema.optional(),
   backgroundColor: hexColorSchema.optional(),
 
@@ -78,9 +78,9 @@ export const commonTextProperties = {
   wordSpacing: z.number().optional(),
 }
 
-export const commonSectionProperties = {
+export const sectionProperties = {
+  maxWidth: z.number().optional(),
   width: zPercentageValue.optional(),
-  align: horizontalAlignment.optional(),
 
   backgroundImage: z.string().optional(),
   backgroundColor: hexColorSchema.optional(),

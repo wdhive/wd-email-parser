@@ -2,47 +2,49 @@ import { z } from 'zod'
 import * as helpers from './helpers'
 
 export const zRowSchema = z.object({
+  ...helpers.sectionProperties,
   ...helpers.visibilityProperties,
-  ...helpers.commonSectionProperties,
 
   ...helpers.borderProperties,
   ...helpers.paddingProperties,
   ...helpers.containerPaddingProperties,
 
   type: z.literal('EMAIL-ROW'),
-
-  verticalAlign: helpers.verticalAlignment.optional(),
 })
 
 export const zRowItemSchema = z.object({
+  width: helpers.zPercentageValue.optional(),
   align: helpers.horizontalAlignment.optional(),
   verticalAlign: helpers.verticalAlignment.optional(),
 })
 
 export const zSectionSchema = z.object({
+  ...helpers.sectionProperties,
   ...helpers.visibilityProperties,
-  ...helpers.commonSectionProperties,
 
   ...helpers.borderProperties,
   ...helpers.paddingProperties,
   ...helpers.containerPaddingProperties,
 
   type: z.literal('EMAIL-SECTION'),
+
+  align: helpers.horizontalAlignment.optional(),
 })
 
 export const zHTMLSchema = z.object({
+  ...helpers.sectionProperties,
   ...helpers.visibilityProperties,
-  ...helpers.commonSectionProperties,
 
   ...helpers.borderProperties,
   ...helpers.containerPaddingProperties,
 
   type: z.literal('EMAIL-HTML'),
+
   html: helpers.zHtmlString,
 })
 
 export const zButtonSchema = z.object({
-  ...helpers.commonTextProperties,
+  ...helpers.textProperties,
   ...helpers.visibilityProperties,
 
   ...helpers.borderProperties,
@@ -60,7 +62,7 @@ export const zButtonSchema = z.object({
 })
 
 export const zTextSchema = z.object({
-  ...helpers.commonTextProperties,
+  ...helpers.textProperties,
   ...helpers.visibilityProperties,
 
   ...helpers.borderProperties,
@@ -73,7 +75,7 @@ export const zTextSchema = z.object({
 })
 
 export const zHeadingSchema = z.object({
-  ...helpers.commonTextProperties,
+  ...helpers.textProperties,
   ...helpers.visibilityProperties,
 
   ...helpers.borderProperties,
