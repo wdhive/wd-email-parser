@@ -20,14 +20,27 @@ const zodNodeSchema: z.ZodType<types.EmailNode> = z.lazy(() => {
 })
 
 export * from './types.t'
-export default function nodeSchema(node: types.EmailNode) {
+
+function handleZodError(err: unknown) {
+  if (!(err instanceof z.ZodError)) return
+
+  throw new Error(err.errors.map((e) => e.message).join('\n'))
+}
+
+export function parseEmailNode(node: types.EmailNode) {
   try {
     return zodNodeSchema.parse(node)
   } catch (err) {
-    if (err instanceof z.ZodError) {
-      throw new Error(err.errors.map((e) => e.message).join('\n'))
-    }
+    handleZodError(err)
+    throw err
+  }
+}
 
+export async function parseEmailNodeAsync(node: types.EmailNode) {
+  try {
+    return await zodNodeSchema.parseAsync(node)
+  } catch (err) {
+    handleZodError(err)
     throw err
   }
 }
